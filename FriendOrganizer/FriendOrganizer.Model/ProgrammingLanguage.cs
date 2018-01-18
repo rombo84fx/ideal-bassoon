@@ -1,20 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace FriendOrganizer.Model
 {
-    public class LookupItem
+    public class ProgrammingLanguage
     {
         public int Id { get; set; }
-        public string DisplayMember { get; set; }
-    }
 
-    public class NullLookupItem : LookupItem
-    {
-        public new int? Id => null;
+        [Required]
+        [StringLength(50)]
+        public string Name { get; set; }
     }
 }

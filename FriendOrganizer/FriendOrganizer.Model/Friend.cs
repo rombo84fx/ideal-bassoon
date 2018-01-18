@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace FriendOrganizer.Model
 {
@@ -16,5 +18,22 @@ namespace FriendOrganizer.Model
         [StringLength(50)]
         [EmailAddress]
         public string Email { get; set; }
+
+        public int? FavoriteLanguageId { get; set; }
+
+        public ProgrammingLanguage FavoriteLanguage { get; set; }
+
+        public ICollection<FriendPhoneNumber> PhoneNumbers { get; set; }
+
+        public ICollection<Meeting> Meetings { get; set; } 
+
+        public Friend()
+        {
+            PhoneNumbers = new Collection<FriendPhoneNumber>();
+            Meetings = new Collection<Meeting>();
+        }
+
+        [Timestamp]
+        public byte[] RowVersion { get; set; }
     }
 }
